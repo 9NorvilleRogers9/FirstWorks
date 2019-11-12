@@ -35,4 +35,25 @@ public class Author {
     public void setGender(char gender) {
         this.gender = gender;
     }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result + name.hashCode();
+        result = 19 * result + email.hashCode();
+        result = 19 * result + gender;
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Author author = (Author) obj;
+        return author.name.equals(name) && author.email.equals(email) && author.gender == gender;
+    }
 }
