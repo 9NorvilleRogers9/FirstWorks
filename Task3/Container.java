@@ -48,6 +48,28 @@ public class Container {
             flag=true;
         return flag;
     }
+	@Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result +x1;
+        result = 19 * result +x2;
+        result = 19 * result +y1;
+        result = 19 * result +y2;
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Container container = (Container) obj;
+        return container.x1 == x1 && container.y1 == y1 && container.x2 == x2 &&
+                container.y2 == y2;
+    }
 
     @Override
     public String toString() {
