@@ -52,6 +52,24 @@ public class MyPolynomial
         }
         return polynom+="x"+(0 > coeffs[0] ? coeffs[0] : "+"+coeffs[0]);
     }
+	
+	@Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result + Arrays.hashCode(coeffs);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        MyPolynomial myPolynomial = (MyPolynomial) obj;
+        return Arrays.equals(myPolynomial.coeffs,coeffs);
+    }
 }
 
 
