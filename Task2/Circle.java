@@ -48,4 +48,23 @@ public class Circle {
     {
         return ("radius = " + radius + " " +"color = " + color);
     }
+	
+	@Override
+    public int hashCode() {
+        int result = 17;
+        result = 19 * result + color.hashCode();
+        result = 19 * result + (int)((Double.doubleToLongBits(radius))^(Double.doubleToLongBits(radius)>>>32));
+        return result;
+    }
+
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Circle circle = (Circle) obj;
+        return circle.radius == radius && circle.color.equals(color);
+    }
 }
