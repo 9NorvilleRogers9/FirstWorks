@@ -63,6 +63,24 @@ public class MyPoint {
         double res;
         return res = sqrt(pow(this.x,2)+ pow(this.y,2));
     }
+	@Override
+    public int hashCode() {
+        int result = 17;
+        result = 19 * result + x;
+        result = 19 * result + y;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        MyPoint myPoint = (MyPoint) obj;
+        return myPoint.x == x && myPoint.y == y;
+    }
+	
     @Override
     public String toString() {
         return "(" + x + "," + y + ")";
