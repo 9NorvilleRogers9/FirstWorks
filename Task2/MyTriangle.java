@@ -49,4 +49,26 @@ public class MyTriangle {
         }
         return name;
     }
+	
+	@Override
+    public int hashCode() {
+        int result = 17;
+        result = 19 * result + v1.hashCode();
+        result = 19 * result + v2.hashCode();
+        result = 19 * result + v3.hashCode();
+
+        return result;
+
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        MyTriangle myTriangle = (MyTriangle) obj;
+        return myTriangle.v1.equals(v1) && myTriangle.v2.equals(v2) && myTriangle.v3.equals(v3);
+    }
+
 }
