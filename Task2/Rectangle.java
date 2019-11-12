@@ -40,6 +40,24 @@ public class Rectangle {
     {
         return 2*(lenght+width);
     }
+	@Override
+    public int hashCode() {
+        int result = 17;
+        result = 19 * result + Float.floatToIntBits(lenght);
+        result = 19 * result + Float.floatToIntBits(width);
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Rectangle rectangle = (Rectangle) obj;
+        return rectangle.lenght == lenght && rectangle.width == width;
+    }
 
     @Override
     public String toString()
