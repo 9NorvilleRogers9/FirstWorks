@@ -53,13 +53,31 @@ public class Book {
         return autName;
     }
     @Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result + name.hashCode();
+        result = 19 * result + Arrays.hashCode(authors);
+        result = 19 * result + (int)((Double.doubleToLongBits(price))^(Double.doubleToLongBits(price)>>>32));
+        result = 19 * result + qty;
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj  ==  null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Book book = (Book) obj;
+
+        return book.name.equals(name) && Arrays.equals(book.authors,authors) &&
+                book.qty == qty && book.price == price;
+    }
+    @Override
     public String toString()
     {
-        return "Book{" +
-                "name='" + name + '\'' +
-                ", authors=" + Arrays.toString(authors) +
-                ", price=" + price +
-                ", qty=" + qty +
-                '}';
+        return "Book{" + "name='" + name + ' ' + ", authors=" + Arrays.toString(authors) + ", price=" + price + ", qty=" + qty + '}';
     }
 }
