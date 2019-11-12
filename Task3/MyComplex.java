@@ -139,4 +139,24 @@ public class MyComplex {
 
 
     }
+	@Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result + (int)((Double.doubleToLongBits(real))^(Double.doubleToLongBits(real)>>>32));
+        result = 19 * result + (int)((Double.doubleToLongBits(imag))^(Double.doubleToLongBits(imag)>>>32));
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        MyComplex myComplex = (MyComplex) obj;
+        return myComplex.real == real && myComplex.imag == imag;
+    }
+
 }
