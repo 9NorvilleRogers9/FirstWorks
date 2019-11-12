@@ -75,6 +75,29 @@ public class Ball
     {
         this.yDelta=-this.yDelta;
     }
+	@Override
+    public int hashCode() {
+        int result = 17;
+
+        result = 19 * result + Float.floatToIntBits(x);
+        result = 19 * result + Float.floatToIntBits(y);
+        result = 19 * result + radius;
+        result = 19 * result + Float.floatToIntBits(xDelta);
+        result = 19 * result + Float.floatToIntBits(yDelta);
+
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null || obj.getClass() != this.getClass()) {
+            return false;
+        }
+
+        Ball ball = (Ball) obj;
+        return ball.x == x && ball.y == y && ball.radius == radius &&
+                ball.xDelta == xDelta && ball.yDelta == yDelta;
+    }
 
     @Override
     public String toString() {
